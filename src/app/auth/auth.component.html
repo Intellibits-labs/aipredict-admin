@@ -1,0 +1,15 @@
+<mat-grid-list
+  [cols]="breakpoint"
+  rowHeight="100%"
+  (window:resize)="onResize($event)"
+>
+  <mat-grid-tile *ngIf="smView" colspan="1">
+    <div class="signin-content">
+      <img src="assets/img/Businessman-rafiki.svg" alt="" />
+      <h1 class="commonTitle">Welcome Back</h1>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <router-outlet></router-outlet>
+  </mat-grid-tile>
+</mat-grid-list>

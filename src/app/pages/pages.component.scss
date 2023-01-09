@@ -1,0 +1,39 @@
+mat-sidenav-container {
+  height: 100vh;
+}
+mat-sidenav {
+  width: 300px;
+  padding: 20px;
+  height: 100vh;
+  border-right: none;
+  .logo {
+    width: 70%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+.logoutbottom {
+  position: absolute;
+  bottom: 15px;
+  width: 260px;
+
+  .logout_icon {
+    margin-top: 24px;
+  }
+}
+
+a {
+  margin: 0;
+  padding: 0;
+}
+.selected {
+  background-color: #dddddd;
+  border-radius: 8px;
+  .mdc-list-item__primary-text {
+    color: #000000;
+  }
+  mat-icon {
+    color: #000000;
+  }
+}

@@ -1,0 +1,39 @@
+mat-card {
+  width: 400px;
+  padding: 30px 20px;
+  margin: auto;
+  text-align: center;
+  box-shadow: 0 0 10px 1px #dbd9d9;
+  .logo_img {
+    width: 200px;
+    margin-bottom: 15px;
+  }
+  h2 {
+    margin-bottom: 5px;
+  }
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+.angular-logo {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 32px;
+}
+
+.separate {
+  margin-bottom: 32px;
+}
+
+.forget {
+  padding-top: 20px;
+  cursor: pointer;
+}
+@media (max-width: 576px) {
+  mat-card {
+    width: 100%;
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,23 @@
+.main_content {
+  padding: 20px;
+
+  mat-card {
+    width: 100%;
+    margin: 10px;
+    box-shadow: 0 0 5px 1px #f1ecec;
+    border-radius: 12px;
+    mat-card-header {
+      padding: 30px;
+      align-items: center;
+    }
+    .card-image {
+      width: 60px;
+      height: 60px;
+      margin: 0;
+    }
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}

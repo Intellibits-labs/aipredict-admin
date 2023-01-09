@@ -1,0 +1,84 @@
+<div class="user_main">
+  <mat-toolbar>
+    <span>Predictions</span>
+    <span class="example-spacer"></span>
+    <!-- <mat-chip-listbox (change)="roleChange($event)">
+      <mat-chip-option>user</mat-chip-option>
+      <mat-chip-option>predictor</mat-chip-option>
+    </mat-chip-listbox> -->
+  </mat-toolbar>
+
+  <table mat-table [dataSource]="usersArray">
+    <ng-container *ngFor="let item of tableColumn" [matColumnDef]="item">
+      <th mat-header-cell *matHeaderCellDef>{{ item }}</th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="item == 'Username'">
+          {{ element.user.name }}
+        </span>
+
+        <span *ngIf="item == 'Stock'">
+          {{ element.stock.name }}
+        </span>
+        <span *ngIf="item == 'ROI'">
+          {{ element?.['ROI'] | number}}
+        </span>
+        <span *ngIf="item == 'TradeDate'">
+          {{ element.tradeDate | date : "dd/MM/yyyy" }}
+        </span>
+        <span *ngIf="item == 'Buy Price'"> ₹{{ element.buyPrice }} </span>
+        <span *ngIf="item == 'Sell Price'"> ₹{{ element.sellPrice }} </span>
+        <span *ngIf="item == 'Stop Loss'"> ₹{{ element.sellPrice }} </span>
+        <span *ngIf="item == 'Status'">
+          <button
+            mat-stroked-button
+            *ngIf="element.status == 'PENDING'"
+            color="primary"
+            class="common_enabled"
+          >
+            Active
+          </button>
+          <button
+            mat-stroked-button
+            *ngIf="element.status == 'COMPLETED' || element.status == 'FAILED'"
+            class="common_disabled"
+            color="warn"
+          >
+            Closed
+          </button>
+        </span>
+
+        <span *ngIf="item == 'Actions'">
+          <button
+            *ngIf="element.role == 'user'"
+            mat-flat-button
+            color="primary"
+            (click)="changePredictor(element)"
+          >
+            Change Role to Predictor
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            *ngIf="element.role == 'predictor'"
+            (click)="changeUser(element)"
+          >
+            Change Role to User
+          </button>
+        </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="tableColumn"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumn"></tr>
+  </table>
+  <mat-paginator
+    (page)="getData($event)"
+    [pageSizeOptions]="[5, 10, 20, 50, 100]"
+    [length]="totalLength"
+    [pageIndex]="pageIndex"
+    [pageSize]="pageSize"
+    [showFirstLastButtons]="true"
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+</div>

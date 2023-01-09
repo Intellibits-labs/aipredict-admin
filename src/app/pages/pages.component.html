@@ -1,0 +1,39 @@
+<mat-sidenav-container
+  class="example-sidenav-container"
+  [style.marginTop.px]="mobileQuery.matches ? 0 : 0"
+>
+  <mat-sidenav
+    [opened]="true"
+    #snav
+    id="snav"
+    [mode]="mobileQuery.matches ? 'over' : 'side'"
+    [fixedInViewport]="mobileQuery.matches"
+    fixedTopGap="0"
+  >
+    <img class="logo" src="assets/img/indiapredict-logo (1).svg" alt="" />
+    <mat-nav-list>
+      <a
+        mat-list-item
+        *ngFor="let item of pagesArray"
+        [routerLink]="item.url"
+        routerLinkActive="selected"
+        routerDirection="root"
+      >
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <div matListItemTitle>{{ item.title }}</div>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list class="logoutbottom">
+      <a mat-list-item (click)="logout()">
+        <mat-icon class="logout_icon" matListItemIcon>logout</mat-icon>
+        <div matListItemTitle>{{ userData?.name }}</div>
+        <div matListItemLine>{{ userData?.email }}</div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (menuToggle)="snav.toggle()"></app-header>
+    <router-outlet> </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

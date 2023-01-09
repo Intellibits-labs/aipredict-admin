@@ -1,0 +1,52 @@
+<div class="main_content">
+  <mat-grid-list
+    [cols]="breakpoint"
+    [rowHeight]="rowHeight"
+    (window:resize)="onResize($event)"
+  >
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="card-image">
+            <img src="assets/img/team.png" alt="" />
+          </div>
+          <mat-card-title>{{ dashboard?.users }}</mat-card-title>
+          <mat-card-subtitle>Users</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="card-image">
+            <img src="assets/img/predictor.png" alt="" />
+          </div>
+          <mat-card-title>{{ dashboard?.predictors }}</mat-card-title>
+          <mat-card-subtitle>Predictors</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="card-image">
+            <img src="assets/img/stock.png" alt="" />
+          </div>
+          <mat-card-title>{{ dashboard?.stocks }}</mat-card-title>
+          <mat-card-subtitle>Stocks</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="card-image">
+            <img src="assets/img/prediction.png" alt="" />
+          </div>
+          <mat-card-title>{{ dashboard?.predictions }}</mat-card-title>
+          <mat-card-subtitle>Predictions</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,134 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.common_enabled {
+  background-color: #fafbfa !important;
+  // border: 1px solid #3f51b5 !important;
+  min-height: 26px !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+}
+.common_disabled {
+  background-color: #fafbfa !important;
+  // border: 1px solid #f44336 !important;
+  min-height: 26px !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+}
+ion-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: left;
+  letter-spacing: 0.2px;
+  color: #000000 !important;
+}
+
+.header-title {
+  text-align: left;
+}
+.commonTitle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  color: #000000;
+  text-transform: capitalize;
+  margin: 0;
+}
+.commonMediumTitle {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 23px;
+  color: #000000;
+  text-transform: capitalize;
+  margin: 0;
+}
+.commonTitle-20 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  text-transform: capitalize;
+  margin: 0;
+}
+.commonTitle-15 {
+  margin: 0;
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+.commonTitle-16 {
+  margin: 0;
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.1px;
+  color: #000000;
+}
+.commonDesc {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #b9c1cc;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+.commonSubmitBtn {
+  background: #364fd4 !important;
+  border-radius: 12px;
+  color: #ffffff !important;
+  width: 100%;
+  height: 50px !important;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  --box-shadow: none;
+  margin: 0;
+  text-transform: capitalize;
+}
+.commonTextLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.commonSingleLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+a {
+  color: #364fd4;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+// mat-list-item {
+//   cursor: pointer !important;
+// }

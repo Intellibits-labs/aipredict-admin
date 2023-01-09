@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-content>
+    <img class="logo_img" src="assets/img/indiapredict-logo (1).svg" alt="" />
+
+    <h2 class="commonTitle">Login to admin</h2>
+    <p class="commonDesc pTag">Enter your login email Id and Password</p>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <mat-form-field class="full-width-input" appearance="outline">
+        <mat-label>Email ID</mat-label>
+        <input
+          matInput
+          type="email"
+          autocomplete="email"
+          placeholder="Email Id"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="submitted && f['email'].errors">
+          <div *ngIf="f['email'].errors['required']">
+            Please enter a valid username or email
+          </div>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input separate" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          autocomplete="current-password"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
+        <mat-error *ngIf="submitted && f['password'].errors">
+          <div *ngIf="f['password'].errors['required']">
+            Password is required
+          </div>
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+       
+        class="commonSubmitBtn"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+    </form>
+  </mat-card-content>
+  <a class="forget" (click)="forgetClick()"> Forget your Password?</a>
+</mat-card>

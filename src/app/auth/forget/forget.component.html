@@ -1,0 +1,60 @@
+<mat-card *ngIf="!otpValue">
+  <mat-card-header>
+    <div mat-card-avatar (click)="loginPage()">
+      <mat-icon fontIcon="chevron_left"></mat-icon>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <img class="logo_img" src="assets/img/indiapredict-logo (1).svg" alt="" />
+
+    <h2 class="commonTitle">Forget Password</h2>
+    <p class="commonDesc pTag">Enter your Email to reset your password</p>
+    <form [formGroup]="forgetForm" (ngSubmit)="Send()">
+      <mat-form-field class="full-width-input" appearance="outline">
+        <mat-label>Email ID</mat-label>
+        <input
+          matInput
+          type="email"
+          autocomplete="email"
+          placeholder="Email Id"
+          formControlName="email"
+          required
+        />
+        <mat-error
+          *ngIf="getemail?.hasError && (getemail?.dirty || getemail?.touched)"
+        >
+          Please enter a valid username or email
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        class="commonSubmitBtn"
+        [disabled]="forgetForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="otpValue">
+  <mat-card-header>
+    <div mat-card-avatar (click)="back()">
+      <mat-icon fontIcon="chevron_left"></mat-icon>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <img class="logo_img" src="assets/img/indiapredict-logo (1).svg" alt="" />
+    <h2 class="commonTitle">Verify Password</h2>
+    <p class="commonDesc pTag">Enter the 6-digit code sent to your password</p>
+    <ng-otp-input
+      #ngOtpInput
+      (onInputChange)="onOtpChange($event)"
+      [config]="ConfigOption"
+    ></ng-otp-input>
+
+    <button (click)="submit()" mat-flat-button class="commonSubmitBtn">
+      submit
+    </button>
+  </mat-card-content>
+</mat-card>
