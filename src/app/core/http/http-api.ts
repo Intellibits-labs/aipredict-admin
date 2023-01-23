@@ -1,24 +1,26 @@
 export class HttpApi {
-  static refreshToken = 'auth/refresh-tokens';
-  static userLogout = 'user/revoketoken';
-  static oauthLogin = 'auth/login';
-  static me = 'user/me';
+  static refreshToken = "auth/refresh-tokens";
+  static userLogout = "user/revoketoken";
+  static oauthLogin = "auth/login";
+  static me = "user/me";
 
-  //Users
-  static getUsers = 'users';
-  static changePredictor = 'users/topredictor/';
-  static changeUser = 'users/touser/';
+  // Users
+  static getUsers = "users";
+  static changePredictor = "users/topredictor/";
+  static changeUser = "users/touser/";
+  static userUpdate = "users/update-user/";
+  static userStatus = "users/status/";
 
   // Forget Password
-  static forgetPassword = 'auth/forgot';
-  static verifyotp = 'auth/verify';
-  static resetPassword = 'auth/reset-password';
+  static forgetPassword = "auth/forgot";
+  static verifyotp = "auth/verify";
+  static resetPassword = "auth/reset-password";
 
-  //Stock
-  static getStock = 'stock';
+  // Stock
+  static getStock = "stock";
 
   // Predictions
-  static getPrediction = 'prediction';
+  static getPrediction = "prediction";
 
-  static getDashboard = 'dashboard';
+  static getDashboard = "dashboard";
 }

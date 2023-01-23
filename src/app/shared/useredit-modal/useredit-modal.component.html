@@ -1,0 +1,14 @@
+<div class="edit-modal">
+  <h2>User Name Update</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>User Name</mat-label>
+    <input matInput [(ngModel)]="userName" />
+  </mat-form-field>
+  <div class="btndiv">
+    <button mat-button [mat-dialog-close]="''">Cancel</button>
+    <button mat-button [mat-dialog-close]="userName" cdkFocusInitial>
+      Update
+    </button>
+  </div>
+</div>

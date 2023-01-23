@@ -1,53 +1,56 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { HttpApi } from 'src/app/core/http/http-api';
-import { DataService } from 'src/app/core/services/data.service';
-import { LoaderService } from 'src/app/core/services/loader.service';
-import { ToastService } from 'src/app/core/services/toast.service';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatTableDataSource } from "@angular/material/table";
+import { HttpApi } from "src/app/core/http/http-api";
+import { DataService } from "src/app/core/services/data.service";
+import { LoaderService } from "src/app/core/services/loader.service";
+import { ToastService } from "src/app/core/services/toast.service";
+import { UsereditModalComponent } from "src/app/shared/useredit-modal/useredit-modal.component";
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss'],
+  selector: "app-users",
+  templateUrl: "./users.component.html",
+  styleUrls: ["./users.component.scss"],
 })
 export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator, { read: true }) paginator: MatPaginator | any;
-  tableColumn: string[] = ['Name', 'Email', 'Type', 'Status', 'Actions'];
+  tableColumn: string[] = ["Name", "Email", "Type", "Status", "Actions"];
   usersArray = new MatTableDataSource<any>([]);
   public totalLength = 0;
 
   public pageSize = 10;
   public pageIndex = 0;
 
-  page = '0';
+  page = "0";
   selectedValue: any;
   constructor(
     private dataService: DataService,
     private toast: ToastService,
-    private loader: LoaderService
+    private loader: LoaderService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.getUsers();
   }
 
-  getUsers(page: string = '1', pageSize = 10) {
+  getUsers(page: string = "1", pageSize = 10) {
     this.loader.show();
     this.pageSize = pageSize;
     this.dataService
       .getMethod(
         HttpApi.getUsers +
-          '?page=' +
+          "?page=" +
           page +
-          '&sortBy=createdAt:desc&limit=' +
+          "&sortBy=createdAt:desc&limit=" +
           this.pageSize +
-          (this.selectedValue ? '&role=' + this.selectedValue : '')
+          (this.selectedValue ? "&role=" + this.selectedValue : "")
       )
       .subscribe({
         next: (res) => {
           console.log(
-            '🚀 ~ line 189 ~ UsersPage ~ this.data.getMethod ~ res',
+            "🚀 ~ line 189 ~ UsersPage ~ this.data.getMethod ~ res",
             res
           );
           this.usersArray = new MatTableDataSource<any>(res?.results);
@@ -63,10 +66,10 @@ export class UsersComponent implements OnInit {
         },
         error: (e) => {
           console.error(e);
-          this.toast.showToast({ message: e.message, type: 'ERROR' });
+          this.toast.showToast({ message: e.message, type: "ERROR" });
           this.loader.dismiss();
         },
-        complete: () => console.info('complete'),
+        complete: () => console.info("complete"),
       });
   }
 
@@ -82,22 +85,22 @@ export class UsersComponent implements OnInit {
     console.log(element);
     this.dataService.getMethod(HttpApi.changePredictor + element.id).subscribe({
       next: (res) => {
-        console.log('🚀 ~76 ~ UsersComponent  ~ res', res);
+        console.log("🚀 ~76 ~ UsersComponent  ~ res", res);
         this.getUsers();
       },
       error: (e) => console.error(e),
-      complete: () => console.info('complete'),
+      complete: () => console.info("complete"),
     });
   }
   changeUser(element: any) {
     console.log(element);
     this.dataService.getMethod(HttpApi.changeUser + element.id).subscribe({
       next: (res) => {
-        console.log('🚀 ~76 ~ UsersComponent  ~ res', res);
+        console.log("🚀 ~76 ~ UsersComponent  ~ res", res);
         this.getUsers();
       },
       error: (e) => console.error(e),
-      complete: () => console.info('complete'),
+      complete: () => console.info("complete"),
     });
   }
 
@@ -105,5 +108,50 @@ export class UsersComponent implements OnInit {
     console.log(ev.value);
     this.selectedValue = ev.value;
     this.getUsers();
+  }
+  editClick(item: any) {
+    const dialogRef = this.dialog.open(UsereditModalComponent, {
+      data: { isData: item },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed", result);
+      if (result) {
+        this.dataService
+          .postMethod(HttpApi.userUpdate + item.id, { name: result })
+          .subscribe({
+            next: (res) => {
+              console.log(res);
+              this.getUsers();
+            },
+            error: (e) => {
+              console.log(e);
+            },
+            complete: () => console.info("complete"),
+          });
+      }
+    });
+  }
+
+  statusClick(element: any) {
+    this.dataService.getMethod(HttpApi.userStatus + element.id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.toast.showToast({
+          message: "status change success",
+          type: "SUCCESS",
+        });
+        setTimeout(() => {
+          this.getUsers();
+        }, 3000);
+      },
+      error: (e) => {
+        console.log(e);
+        this.toast.showToast({
+          message: e.message,
+          type: "ERROR",
+        });
+      },
+      complete: () => console.info("complete"),
+    });
   }
 }

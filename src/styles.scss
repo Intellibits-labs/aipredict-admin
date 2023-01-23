@@ -132,3 +132,15 @@ body {
 // mat-list-item {
 //   cursor: pointer !important;
 // }
+.mat-mdc-snack-bar-container {
+  --mat-mdc-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+
+  &.snackbar-failed {
+    --mdc-snackbar-container-color: #f23a2f;
+  }
+
+  &.snackbar-success {
+    --mdc-snackbar-container-color: #43a446;
+  }
+}

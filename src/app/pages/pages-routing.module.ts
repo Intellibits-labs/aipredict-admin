@@ -1,41 +1,41 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { PagesComponent } from './pages.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { PagesComponent } from "./pages.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: PagesComponent,
     children: [
       {
-        path: '',
-        redirectTo: 'users',
-        pathMatch: 'full',
+        path: "",
+        redirectTo: "users",
+        pathMatch: "full",
       },
       {
-        path: 'dashboard',
+        path: "dashboard",
         loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+          import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
       },
       {
-        path: 'users',
+        path: "users",
         loadChildren: () =>
-          import('./users/users.module').then((m) => m.UsersModule),
+          import("./users/users.module").then((m) => m.UsersModule),
       },
       {
-        path: 'predictor',
+        path: "predictor",
         loadChildren: () =>
-          import('./predictor/predictor.module').then((m) => m.PredictorModule),
+          import("./predictor/predictor.module").then((m) => m.PredictorModule),
       },
       {
-        path: 'stocks',
+        path: "stocks",
         loadChildren: () =>
-          import('./stocks/stocks.module').then((m) => m.StocksModule),
+          import("./stocks/stocks.module").then((m) => m.StocksModule),
       },
       {
-        path: 'predictions',
+        path: "predictions",
         loadChildren: () =>
-          import('./predictions/predictions.module').then(
+          import("./predictions/predictions.module").then(
             (m) => m.PredictionsModule
           ),
       },
