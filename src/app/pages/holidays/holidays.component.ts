@@ -29,17 +29,4 @@ export class HolidaysComponent implements OnInit {
   date = new FormControl(moment());
   constructor() {}
   ngOnInit(): void {}
-
-  chosenYearHandler(normalizedYear: Moment) {
-    const ctrlValue: any = this.date.value;
-    ctrlValue.year(normalizedYear.year());
-    this.date.setValue(ctrlValue);
-  }
-
-  chosenMonthHandler(normalizedMonth: Moment) {
-    const ctrlValue: any = this.date.value;
-    ctrlValue.month(normalizedMonth.month());
-    this.date.setValue(ctrlValue);
-    console.log(ctrlValue);
-  }
 }
