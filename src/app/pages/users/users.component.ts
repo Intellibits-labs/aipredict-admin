@@ -15,7 +15,14 @@ import { UsereditModalComponent } from "src/app/shared/useredit-modal/useredit-m
 })
 export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator, { read: true }) paginator: MatPaginator | any;
-  tableColumn: string[] = ["Name", "Email", "Type", "Status", "Actions"];
+  tableColumn: string[] = [
+    "Name",
+    "Email",
+    "Type",
+    "Annual ROI",
+    "Status",
+    "Actions",
+  ];
   usersArray = new MatTableDataSource<any>([]);
   public totalLength = 0;
 

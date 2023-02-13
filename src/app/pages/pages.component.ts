@@ -2,44 +2,44 @@ import {
   BreakpointObserver,
   Breakpoints,
   MediaMatcher,
-} from '@angular/cdk/layout';
+} from "@angular/cdk/layout";
 import {
   ChangeDetectorRef,
   Component,
   Inject,
   OnInit,
   ViewChild,
-} from '@angular/core';
+} from "@angular/core";
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+} from "@angular/material/dialog";
 
-import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
-import { DataService } from '../core/services/data.service';
-import { MenuServiceService } from '../core/services/menu-service.service';
+import { MatSidenav } from "@angular/material/sidenav";
+import { Router } from "@angular/router";
+import { DataService } from "../core/services/data.service";
+import { MenuServiceService } from "../core/services/menu-service.service";
 
 @Component({
-  selector: 'app-pages',
-  templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.scss'],
+  selector: "app-pages",
+  templateUrl: "./pages.component.html",
+  styleUrls: ["./pages.component.scss"],
 })
 export class PagesComponent implements OnInit {
-  @ViewChild('snav') public sidenav: MatSidenav | any;
+  @ViewChild("snav") public sidenav: MatSidenav | any;
   showFiller = true;
   isPhonePortrait: boolean = false;
   pagesArray: any = [
     {
-      title: 'Dashboard',
-      url: '/pages/dashboard',
-      icon: 'dashboard',
+      title: "Dashboard",
+      url: "/pages/dashboard",
+      icon: "dashboard",
     },
     {
-      title: 'Users',
-      url: '/pages/users',
-      icon: 'person',
+      title: "Users",
+      url: "/pages/users",
+      icon: "person",
     },
     // {
     //   title: 'Predictor',
@@ -47,14 +47,19 @@ export class PagesComponent implements OnInit {
     //   icon: 'batch_prediction',
     // },
     {
-      title: 'Stocks',
-      url: '/pages/stocks',
-      icon: 'monitoring',
+      title: "Stocks",
+      url: "/pages/stocks",
+      icon: "monitoring",
     },
     {
-      title: 'Predictions',
-      url: '/pages/predictions',
-      icon: 'leaderboard',
+      title: "Predictions",
+      url: "/pages/predictions",
+      icon: "leaderboard",
+    },
+    {
+      title: "Holidays",
+      url: "/pages/holidays",
+      icon: "leaderboard",
     },
   ];
   userData: any;
@@ -70,7 +75,7 @@ export class PagesComponent implements OnInit {
     public changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia("(max-width: 600px)");
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
@@ -88,41 +93,41 @@ export class PagesComponent implements OnInit {
   ngAfterViewInit(): void {
     this.menuServiceService.setSidenav(this.sidenav);
     console.log(
-      '🚀 ~ file: pages.component.ts:80 ~ PagesComponent ~ ngAfterViewInit ~ this.sidenav',
+      "🚀 ~ file: pages.component.ts:80 ~ PagesComponent ~ ngAfterViewInit ~ this.sidenav",
       this.sidenav
     );
   }
 
   getUserMe() {
-    this.dataService.getMethod('users/me').subscribe({
+    this.dataService.getMethod("users/me").subscribe({
       next: (res) => {
-        console.log('🚀 ~ file: pages.page.ts ~ line 36 ~  ~ res', res);
+        console.log("🚀 ~ file: pages.page.ts ~ line 36 ~  ~ res", res);
         this.userData = res;
       },
       error: (e) => console.error(e),
-      complete: () => console.info('complete'),
+      complete: () => console.info("complete"),
     });
   }
 
   logout() {
     let dialogRef = this.dialog.open(LogoutDialog, {
-      width: '300px',
-      height: '200px',
-      data: { data: '' },
+      width: "300px",
+      height: "200px",
+      data: { data: "" },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed', result);
-      if (result == 'YES') {
+      console.log("The dialog was closed", result);
+      if (result == "YES") {
         localStorage.clear();
-        this.router.navigate(['/']);
+        this.router.navigate(["/"]);
       }
     });
   }
 }
 @Component({
-  selector: 'logout-dialog',
-  templateUrl: '../pages/logout-dialog.html',
+  selector: "logout-dialog",
+  templateUrl: "../pages/logout-dialog.html",
 })
 export class LogoutDialog {
   constructor(

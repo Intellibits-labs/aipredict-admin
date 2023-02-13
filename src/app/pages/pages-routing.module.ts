@@ -39,6 +39,11 @@ const routes: Routes = [
             (m) => m.PredictionsModule
           ),
       },
+      {
+        path: "holidays",
+        loadChildren: () =>
+          import("./holidays/holidays.module").then((m) => m.HolidaysModule),
+      },
     ],
   },
 ];

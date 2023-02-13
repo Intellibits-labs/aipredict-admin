@@ -24,6 +24,9 @@
         <span *ngIf="item == 'Email'">
           {{ element.email }}
         </span>
+        <span *ngIf="item == 'Annual ROI'">
+          {{ element.annualROI | number }}
+        </span>
         <span *ngIf="item == 'Type'">
           <span>{{ element.googleId ? "Google" : "Facebook" }}</span>
         </span>
