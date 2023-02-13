@@ -23,7 +23,7 @@
           {{ element?.['ROI'] | number}}
         </span>
         <span *ngIf="item == 'TradeDate'">
-          {{ element.tradeDate | date : "dd/MM/yyyy" }}
+          {{ element.tradeDate | date : "dd-MMM-YYYYY" }}
         </span>
         <span *ngIf="item == 'Buy Price'"> ₹{{ element.buyPrice }} </span>
         <span *ngIf="item == 'Sell Price'"> ₹{{ element.sellPrice }} </span>
