@@ -144,3 +144,10 @@ body {
     --mdc-snackbar-container-color: #43a446;
   }
 }
+.selected-date {
+  background-color: #ffd6d6 !important;
+  div {
+    color: #ff1010;
+  }
+  // border-radius: 50%;
+}

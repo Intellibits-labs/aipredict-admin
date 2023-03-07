@@ -43,7 +43,7 @@ const modulesArray = [
   MatBadgeModule,
   MatDialogModule,
   MatRippleModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
@@ -51,8 +51,9 @@ const modulesArray = [
   imports: [CommonModule, ...modulesArray],
   exports: [...modulesArray],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: "en-GB" },
+    { provide: MAT_DATE_LOCALE, useValue: "en-GB" }
+
     // { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
-  ],
+  ]
 })
 export class MaterialModule {}
