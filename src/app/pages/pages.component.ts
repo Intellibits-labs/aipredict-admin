@@ -59,7 +59,7 @@ export class PagesComponent implements OnInit {
     {
       title: "Holidays",
       url: "/pages/holidays",
-      icon: "calender"
+      icon: "calendar_month"
     }
   ];
   userData: any;
