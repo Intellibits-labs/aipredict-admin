@@ -5,12 +5,12 @@ import { HolidaysComponent } from "./holidays.component";
 const routes: Routes = [
   {
     path: "",
-    component: HolidaysComponent
-  }
+    component: HolidaysComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class HolidaysRoutingModule {}

@@ -3,15 +3,8 @@
     <span>Holidays</span>
     <span class="example-spacer"></span>
   </mat-toolbar>
-
-  <ng-container>
-    <div class="calenderDiv">
-      <mat-calendar
-        [minDate]="minDate"
-        [dateClass]="dateClass()"
-        [selected]="true"
-        (selectedChange)="onSelect($event)"
-      ></mat-calendar>
-    </div>
-  </ng-container>
+  <mat-card class="demo-inline-calendar-card">
+    <mat-calendar [selected]="date"></mat-calendar>
+  </mat-card>
+  <p>Selected Calendar:</p>
 </div>

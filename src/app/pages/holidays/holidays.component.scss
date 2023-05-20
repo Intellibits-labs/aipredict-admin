@@ -1,34 +1,3 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
-.selected {
-  background: black;
-  color: white;
-  border-radius: 0;
-}
-.mat-calendar-body-selected {
-  background-color: #edf6ff !important;
-  color: #fff !important;
-}
-.calenderDiv {
-  //   width: 100%;
-  padding: 0 600px;
-}
-@media (max-width: 1024px) {
-  .calenderDiv {
-    //   width: 100%;
-    padding: 0 0px !important;
-  }
-}
-@media (min-width: 1024px) {
-  .calenderDiv {
-    //   width: 100%;
-    padding: 0 200px !important;
-  }
-}
-@media (min-width: 1400px) {
-  .calenderDiv {
-    //   width: 100%;
-    padding: 0 400px !important;
-  }
+.user_main {
+  padding: 20px;
 }
