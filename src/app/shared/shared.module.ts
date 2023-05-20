@@ -5,9 +5,16 @@ import { HeaderComponent } from "./header/header.component";
 import { MaterialModule } from "../core/material/material.module";
 import { UsereditModalComponent } from "./useredit-modal/useredit-modal.component";
 import { FormsModule } from "@angular/forms";
-const component = [HeaderComponent, UsereditModalComponent];
+import { UploadCsvComponent } from "./upload-csv/upload-csv.component";
+import { NodatafoundComponent } from "./nodatafound/nodatafound.component";
+const component = [
+  HeaderComponent,
+  UsereditModalComponent,
+  UploadCsvComponent,
+  NodatafoundComponent,
+];
 @NgModule({
-  declarations: [...component],
+  declarations: [...component, UploadCsvComponent],
   imports: [CommonModule, MaterialModule, FormsModule],
   exports: [...component],
 })

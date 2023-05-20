@@ -2,10 +2,9 @@
   <mat-toolbar>
     <span>Predictions</span>
     <span class="example-spacer"></span>
-    <!-- <mat-chip-listbox (change)="roleChange($event)">
-      <mat-chip-option>user</mat-chip-option>
-      <mat-chip-option>predictor</mat-chip-option>
-    </mat-chip-listbox> -->
+    <button mat-button class="example-icon" (click)="uploadClick()">
+      Upload
+    </button>
   </mat-toolbar>
 
   <table mat-table [dataSource]="usersArray">
@@ -82,3 +81,4 @@
   >
   </mat-paginator>
 </div>
+<app-nodatafound *ngIf="usersArray && totalLength == 0"></app-nodatafound>

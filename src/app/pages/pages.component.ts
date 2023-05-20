@@ -1,19 +1,19 @@
 import {
   BreakpointObserver,
   Breakpoints,
-  MediaMatcher
+  MediaMatcher,
 } from "@angular/cdk/layout";
 import {
   ChangeDetectorRef,
   Component,
   Inject,
   OnInit,
-  ViewChild
+  ViewChild,
 } from "@angular/core";
 import {
   MatDialog,
   MatDialogRef,
-  MAT_DIALOG_DATA
+  MAT_DIALOG_DATA,
 } from "@angular/material/dialog";
 
 import { MatSidenav } from "@angular/material/sidenav";
@@ -24,7 +24,7 @@ import { MenuServiceService } from "../core/services/menu-service.service";
 @Component({
   selector: "app-pages",
   templateUrl: "./pages.component.html",
-  styleUrls: ["./pages.component.scss"]
+  styleUrls: ["./pages.component.scss"],
 })
 export class PagesComponent implements OnInit {
   @ViewChild("snav") public sidenav: MatSidenav | any;
@@ -34,12 +34,12 @@ export class PagesComponent implements OnInit {
     {
       title: "Dashboard",
       url: "/pages/dashboard",
-      icon: "dashboard"
+      icon: "dashboard",
     },
     {
       title: "Users",
       url: "/pages/users",
-      icon: "person"
+      icon: "person",
     },
     // {
     //   title: 'Predictor',
@@ -49,18 +49,23 @@ export class PagesComponent implements OnInit {
     {
       title: "Stocks",
       url: "/pages/stocks",
-      icon: "monitoring"
+      icon: "monitoring",
     },
     {
       title: "Predictions",
       url: "/pages/predictions",
-      icon: "leaderboard"
+      icon: "leaderboard",
     },
     {
       title: "Holidays",
       url: "/pages/holidays",
-      icon: "calendar_month"
-    }
+      icon: "holiday_village",
+    },
+    {
+      title: "Market Data",
+      url: "/pages/market-data",
+      icon: "data_thresholding",
+    },
   ];
   userData: any;
 
@@ -105,7 +110,7 @@ export class PagesComponent implements OnInit {
         this.userData = res;
       },
       error: (e) => console.error(e),
-      complete: () => console.info("complete")
+      complete: () => console.info("complete"),
     });
   }
 
@@ -113,7 +118,7 @@ export class PagesComponent implements OnInit {
     let dialogRef = this.dialog.open(LogoutDialog, {
       width: "300px",
       height: "200px",
-      data: { data: "" }
+      data: { data: "" },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -127,7 +132,7 @@ export class PagesComponent implements OnInit {
 }
 @Component({
   selector: "logout-dialog",
-  templateUrl: "../pages/logout-dialog.html"
+  templateUrl: "../pages/logout-dialog.html",
 })
 export class LogoutDialog {
   constructor(

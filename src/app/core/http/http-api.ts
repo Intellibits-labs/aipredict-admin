@@ -18,11 +18,11 @@ export class HttpApi {
 
   // Stock
   static getStock = "stock";
-  static getHolidays = "holiday/all";
-  static toggleHoliday = "holiday/toggle";
 
   // Predictions
   static getPrediction = "prediction";
 
   static getDashboard = "dashboard";
+  static postCsvFile = "stock-log/import";
+  static getMarketData = "stock-import";
 }

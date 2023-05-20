@@ -1,20 +1,18 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { PredictionsRoutingModule } from "./predictions-routing.module";
-import { PredictionsComponent } from "./predictions.component";
+import { MarketDataRoutingModule } from "./market-data-routing.module";
+import { MarketDataComponent } from "./market-data.component";
 import { MaterialModule } from "src/app/core/material/material.module";
-import { CoreModule } from "src/app/core/core.module";
 import { SharedModule } from "src/app/shared/shared.module";
 
 @NgModule({
-  declarations: [PredictionsComponent],
+  declarations: [MarketDataComponent],
   imports: [
     CommonModule,
-    PredictionsRoutingModule,
+    MarketDataRoutingModule,
     MaterialModule,
-    CoreModule,
     SharedModule,
   ],
 })
-export class PredictionsModule {}
+export class MarketDataModule {}

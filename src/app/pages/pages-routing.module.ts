@@ -10,46 +10,53 @@ const routes: Routes = [
       {
         path: "",
         redirectTo: "users",
-        pathMatch: "full"
+        pathMatch: "full",
       },
       {
         path: "dashboard",
         loadChildren: () =>
-          import("./dashboard/dashboard.module").then((m) => m.DashboardModule)
+          import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
       },
       {
         path: "users",
         loadChildren: () =>
-          import("./users/users.module").then((m) => m.UsersModule)
+          import("./users/users.module").then((m) => m.UsersModule),
       },
       {
         path: "predictor",
         loadChildren: () =>
-          import("./predictor/predictor.module").then((m) => m.PredictorModule)
+          import("./predictor/predictor.module").then((m) => m.PredictorModule),
       },
       {
         path: "stocks",
         loadChildren: () =>
-          import("./stocks/stocks.module").then((m) => m.StocksModule)
+          import("./stocks/stocks.module").then((m) => m.StocksModule),
       },
       {
         path: "predictions",
         loadChildren: () =>
           import("./predictions/predictions.module").then(
             (m) => m.PredictionsModule
-          )
+          ),
       },
       {
         path: "holidays",
         loadChildren: () =>
-          import("./holidays/holidays.module").then((m) => m.HolidaysModule)
-      }
-    ]
-  }
+          import("./holidays/holidays.module").then((m) => m.HolidaysModule),
+      },
+      {
+        path: "market-data",
+        loadChildren: () =>
+          import("./market-data/market-data.module").then(
+            (m) => m.MarketDataModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class PagesRoutingModule {}

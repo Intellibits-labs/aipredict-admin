@@ -1,0 +1,45 @@
+<div class="content">
+  <div class="flex">
+    <h1>CSV Upload</h1>
+    <button mat-icon-button class="example-icon">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Select date</mat-label>
+    <input
+      matInput
+      [(ngModel)]="selectDate"
+      [max]="maxDate"
+      [matDatepicker]="picker"
+    />
+
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div
+    *ngIf="!csvFileName"
+    class="csvFile"
+    (click)="inputClick(fileImportInput)"
+  >
+    <h2>CSV File Upload</h2>
+    <input
+      type="file"
+      #fileImportInput
+      name="File Upload"
+      id="csvFileUpload"
+      (change)="fileChangeListener($event)"
+      accept=".csv"
+    />
+  </div>
+  <h4 *ngIf="csvFileName">no of Market datas {{ csvRecords.length }}</h4>
+  <!-- <input
+    type="file"
+    accept=".xlsx,.xls,.csv"
+    (change)="uploadDatasource($event)"
+    value="CSV file"
+  /> -->
+  <br />
+  <button mat-stroked-button (click)="saveClick()" color="accent">Save</button>
+</div>
