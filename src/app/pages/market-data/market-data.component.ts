@@ -22,7 +22,8 @@ export class MarketDataComponent {
   public pageIndex = 0;
 
   page = "0";
-
+  allStocks: any = [];
+  selectedStock: any;
   constructor(
     private dataService: DataService,
     private toast: ToastService,
@@ -31,7 +32,22 @@ export class MarketDataComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getMarketDatas();
+    this.getAllStocks();
+  }
+  getAllStocks() {
+    this.dataService.getMethod(HttpApi.getAllStock).subscribe({
+      next: (res) => {
+        console.log("🚀 ~ line 189 ~ UsersPage ~ res", res);
+        this.allStocks = res;
+        this.selectedStock = res[0].id;
+        this.getMarketDatas();
+      },
+      error: (e) => {
+        console.error(e);
+        this.toast.showToast({ message: e.message, type: "ERROR" });
+      },
+      complete: () => console.info("complete"),
+    });
   }
 
   getMarketDatas(page: string = "1", pageSize = 10) {
@@ -40,6 +56,7 @@ export class MarketDataComponent {
     this.dataService
       .getMethod(
         HttpApi.getMarketData +
+          this.selectedStock +
           "?page=" +
           page +
           "&sortBy=createdAt:desc&limit=" +
@@ -51,7 +68,7 @@ export class MarketDataComponent {
             "🚀 ~ line 189 ~ UsersPage ~ this.data.getMethod ~ res",
             res
           );
-          this.MarketDataArray = new MatTableDataSource<any>(res?.results);
+          this.MarketDataArray = new MatTableDataSource<any>(res);
           this.pageSize = res.limit;
           this.pageIndex = res.page - 1;
           this.totalLength = res.totalResults;
@@ -75,5 +92,9 @@ export class MarketDataComponent {
   }
   ngAfterViewInit() {
     this.MarketDataArray.paginator = this.paginator;
+  }
+  selectStock(item: any) {
+    this.selectedStock = item.id;
+    this.getMarketDatas();
   }
 }
