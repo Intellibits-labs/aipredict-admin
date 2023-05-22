@@ -2,9 +2,9 @@
   <mat-toolbar>
     <span>Market Data</span>
     <span class="example-spacer"></span>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Select Stock</mat-label>
-      <mat-select>
+      <mat-select [(value)]="selectedStock">
         <mat-option
           *ngFor="let item of allStocks"
           (click)="selectStock(item)"

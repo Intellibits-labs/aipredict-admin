@@ -3,26 +3,29 @@
     <span>Stocks</span>
     <span class="example-spacer"></span>
     <!-- <mat-chip-listbox (change)="roleChange($event)">
-      <mat-chip-option>user</mat-chip-option>
-      <mat-chip-option>predictor</mat-chip-option>
-    </mat-chip-listbox> -->
+        <mat-chip-option>user</mat-chip-option>
+        <mat-chip-option>predictor</mat-chip-option>
+      </mat-chip-listbox> -->
   </mat-toolbar>
-  <ng-container *ngIf="usersArray">
-    <table mat-table [dataSource]="usersArray" matSort>
+  <ng-container *ngIf="!usersArray">
+    <table mat-table [dataSource]="usersArray">
       <ng-container *ngFor="let item of tableColumn" [matColumnDef]="item">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          {{ item }}
-        </th>
+        <th mat-header-cell *matHeaderCellDef>{{ item }}</th>
         <td mat-cell *matCellDef="let element">
           <span *ngIf="item == 'Name'">
             {{ element.name }}
           </span>
-          <span *ngIf="item == 'Symbol'">
-            {{ element.symbol }}
-          </span>
-          <span *ngIf="item == 'Status'">
-            {{ element.status }}
-          </span>
+          <!-- <span *ngIf="item == 'Price'"> ₹{{ element?.['price']||0 }} </span> -->
+          <!-- <span *ngIf="item == 'Percentage'" class="percentage">
+              <ng-container *ngIf="element && element.flag; else up">
+                <mat-icon class="down-icon">arrow_downward </mat-icon>
+                {{ element?.['10. change percent'] }}
+              </ng-container>
+              <ng-template #up>
+                <mat-icon class="up-icon">arrow_upward </mat-icon>
+                {{ element?.['10. change percent'] }}
+              </ng-template>
+            </span> -->
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="tableColumn"></tr>

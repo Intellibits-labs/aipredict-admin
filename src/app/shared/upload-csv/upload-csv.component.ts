@@ -64,17 +64,29 @@ export class UploadCsvComponent {
       );
   }
   saveClick() {
-    let obj = {
-      date: moment(this.selectDate).format("YYYY-MM"),
-      data: this.csvRecords,
-    };
-    this.dataService.postMethod(HttpApi.postCsvFile, obj).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    const chunkSize = 100;
+    const numChunks = Math.ceil(this.csvRecords.length / chunkSize);
+
+    const resultArray: any[][] = [];
+    for (let i = 0; i < numChunks; i++) {
+      const start = i * chunkSize;
+      const end = start + chunkSize;
+      const chunk = this.csvRecords.slice(start, end);
+      resultArray.push(chunk);
+    }
+    for (let i = 0; i < resultArray.length; i++) {
+      let obj = {
+        date: moment(this.selectDate).format("YYYY-MM"),
+        data: resultArray[i],
+      };
+      this.dataService.postMethod(HttpApi.postCsvFile, obj).subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

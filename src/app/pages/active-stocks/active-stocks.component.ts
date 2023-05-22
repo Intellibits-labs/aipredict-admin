@@ -7,13 +7,13 @@ import { LoaderService } from "src/app/core/services/loader.service";
 import { ToastService } from "src/app/core/services/toast.service";
 
 @Component({
-  selector: "app-stocks",
-  templateUrl: "./stocks.component.html",
-  styleUrls: ["./stocks.component.scss"],
+  selector: "app-active-stocks",
+  templateUrl: "./active-stocks.component.html",
+  styleUrls: ["./active-stocks.component.scss"],
 })
-export class StocksComponent {
+export class ActiveStocksComponent {
   @ViewChild(MatPaginator, { read: true }) paginator: MatPaginator | any;
-  tableColumn: any[] = ["Name", "Symbol", "Status"];
+  tableColumn: string[] = ["Name"];
   usersArray = new MatTableDataSource<any>([]);
   public totalLength = 0;
 
@@ -60,14 +60,13 @@ export class StocksComponent {
           //   array.push(x);
           // });
           this.usersArray = new MatTableDataSource<any>(res.results);
-          // this.usersArray = res.results;
 
           this.pageSize = res.limit;
           this.pageIndex = res.page - 1;
           this.totalLength = res.totalResults;
           console.log(this.usersArray);
           this.usersArray.paginator = this.paginator;
-
+          console.log(this.totalLength);
           this.loader.dismiss();
         },
         error: (e) => {

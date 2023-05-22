@@ -39,8 +39,10 @@ export class MarketDataComponent {
       next: (res) => {
         console.log("🚀 ~ line 189 ~ UsersPage ~ res", res);
         this.allStocks = res;
+
         this.selectedStock = res[0].id;
         this.getMarketDatas();
+        console.log("selectedStock ", this.selectedStock);
       },
       error: (e) => {
         console.error(e);

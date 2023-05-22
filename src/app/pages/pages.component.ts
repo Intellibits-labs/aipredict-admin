@@ -52,6 +52,11 @@ export class PagesComponent implements OnInit {
       icon: "monitoring",
     },
     {
+      title: "Active Stocks",
+      url: "/pages/active-stocks",
+      icon: "monitoring",
+    },
+    {
       title: "Predictions",
       url: "/pages/predictions",
       icon: "leaderboard",

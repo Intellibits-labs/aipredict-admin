@@ -24,7 +24,9 @@
         <span *ngIf="item == 'Trade Date'">
           {{ element.tradeDate | date : "dd-MMM-YYYY" }}
         </span>
-        <span *ngIf="item == 'Buy Price'"> ₹{{ element.buyPrice }} </span>
+        <span *ngIf="item == 'Buy Price'">
+          ₹{{ element.buyPrice | number }}
+        </span>
         <span *ngIf="item == 'Sell Price'"> ₹{{ element.sellPrice }} </span>
         <span *ngIf="item == 'Stop Loss'"> ₹{{ element.sellPrice }} </span>
         <span *ngIf="item == 'Status'">
