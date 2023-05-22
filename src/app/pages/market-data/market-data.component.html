@@ -14,17 +14,35 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <!-- <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Select Stock</mat-label>
+      <input
+        type="text"
+        placeholder=""
+        aria-label="Number"
+        matInput
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of allStocks | async"
+          [value]="option.id"
+        >
+          {{ option.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field> -->
   </mat-toolbar>
   <ng-container *ngIf="MarketDataArray">
     <table mat-table [dataSource]="MarketDataArray">
       <ng-container *ngFor="let item of tableColumn" [matColumnDef]="item">
         <th mat-header-cell *matHeaderCellDef>{{ item }}</th>
         <td mat-cell *matCellDef="let element">
-          <span *ngIf="item == 'Open'"> {{ element.marketOpen }} </span>
+          <span *ngIf="item == 'Open'"> {{ element.open }} </span>
           <span *ngIf="item == 'High'"> {{ element.high }} </span>
-          <span *ngIf="item == 'Close'"> {{ element.marketClose }} </span>
+          <span *ngIf="item == 'Close'"> {{ element.close }} </span>
           <span *ngIf="item == 'Low'"> {{ element.low }} </span>
-          <span *ngIf="item == 'Symbol'">{{ element.symbol }} </span>
+          <span *ngIf="item == 'Symbol'">{{ element.stockSymbol }} </span>
         </td>
       </ng-container>
 

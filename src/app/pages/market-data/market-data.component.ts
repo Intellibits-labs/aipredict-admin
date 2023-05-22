@@ -14,7 +14,7 @@ import { ToastService } from "src/app/core/services/toast.service";
 })
 export class MarketDataComponent {
   @ViewChild(MatPaginator, { read: true }) paginator: MatPaginator | any;
-  tableColumn: string[] = ["Open", "High", "Close", "Low ", "Symbol"];
+  tableColumn: string[] = ["Open", "High", "Close", "Low", "Symbol"];
   MarketDataArray = new MatTableDataSource<any>([]);
   public totalLength = 0;
 

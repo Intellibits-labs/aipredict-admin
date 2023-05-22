@@ -51,13 +51,6 @@ const routes: Routes = [
             (m) => m.MarketDataModule
           ),
       },
-      {
-        path: "active-stocks",
-        loadChildren: () =>
-          import("./active-stocks/active-stocks.module").then(
-            (m) => m.ActiveStocksModule
-          ),
-      },
     ],
   },
 ];

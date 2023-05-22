@@ -2,10 +2,10 @@
   <mat-toolbar>
     <span>Stocks</span>
     <span class="example-spacer"></span>
-    <!-- <mat-chip-listbox (change)="roleChange($event)">
-      <mat-chip-option>user</mat-chip-option>
-      <mat-chip-option>predictor</mat-chip-option>
-    </mat-chip-listbox> -->
+    <mat-chip-listbox (change)="roleChange($event)">
+      <mat-chip-option>PENDING</mat-chip-option>
+      <mat-chip-option>ACTIVE</mat-chip-option>
+    </mat-chip-listbox>
   </mat-toolbar>
   <ng-container *ngIf="usersArray">
     <table mat-table [dataSource]="usersArray" matSort>

@@ -41,11 +41,14 @@ export class StocksComponent {
           "?page=" +
           page +
           "&sortBy=createdAt:desc&limit=" +
-          this.pageSize
+          this.pageSize +
+          "&status=" +
+          this.selectedValue
       )
       .subscribe({
         next: (res) => {
           console.log("🚀 ~ line 189 ~ UsersPage  ~ res", res);
+
           var array: any = [];
           // res.results.map((x: any) => {
           //   if (
