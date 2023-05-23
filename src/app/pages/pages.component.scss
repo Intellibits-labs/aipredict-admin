@@ -51,7 +51,10 @@ a:active {
   }
 }
 
-a .icon:hover {
+a:hover {
+  mat-icon {
+    color: #ffffff !important;
+  }
   color: #ffffff;
   --mdc-list-list-item-hover-leading-icon-color: #ffffff !important;
 }
