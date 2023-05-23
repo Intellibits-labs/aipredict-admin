@@ -1,11 +1,14 @@
 import { Component, ViewChild } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
+import { Observable, map, startWith } from "rxjs";
 import { HttpApi } from "src/app/core/http/http-api";
 import { DataService } from "src/app/core/services/data.service";
 import { LoaderService } from "src/app/core/services/loader.service";
 import { ToastService } from "src/app/core/services/toast.service";
+import { UploadCsvComponent } from "src/app/shared/upload-csv/upload-csv.component";
 
 @Component({
   selector: "app-market-data",
@@ -24,6 +27,10 @@ export class MarketDataComponent {
   page = "0";
   allStocks: any = [];
   selectedStock: any;
+  myControl = new FormControl("");
+  value = "";
+  filteredOptions!: Observable<any[]>;
+  stockId: any;
   constructor(
     private dataService: DataService,
     private toast: ToastService,
@@ -34,13 +41,24 @@ export class MarketDataComponent {
   ngOnInit(): void {
     this.getAllStocks();
   }
+  _filter(value: any): any[] {
+    const filterValue = value?.toLowerCase();
+    return this.allStocks.filter((option: any) =>
+      option.name.toLowerCase().includes(filterValue)
+    );
+  }
+
   getAllStocks() {
     this.dataService.getMethod(HttpApi.getAllStock).subscribe({
       next: (res) => {
         console.log("🚀 ~ line 189 ~ UsersPage ~ res", res);
         this.allStocks = res;
-
-        this.selectedStock = res[0].id;
+        this.myControl.patchValue(res[0].name);
+        this.stockId = res[0].id;
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+          startWith(""),
+          map((value: any) => this._filter(value || ""))
+        );
         this.getMarketDatas();
         console.log("selectedStock ", this.selectedStock);
       },
@@ -51,14 +69,25 @@ export class MarketDataComponent {
       complete: () => console.info("complete"),
     });
   }
+  clearClick() {
+    this.myControl?.reset();
+  }
 
+  onStockClick(item: any) {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(""),
+      map((value: any) => this._filter(value || ""))
+    );
+    this.stockId = item.id;
+    this.getMarketDatas();
+  }
   getMarketDatas(page: string = "1", pageSize = 10) {
     this.loader.show();
     this.pageSize = pageSize;
     this.dataService
       .getMethod(
         HttpApi.getMarketData +
-          this.selectedStock +
+          this.stockId +
           "?page=" +
           page +
           "&sortBy=createdAt:desc&limit=" +
@@ -98,5 +127,15 @@ export class MarketDataComponent {
   selectStock(item: any) {
     this.selectedStock = item.id;
     this.getMarketDatas();
+  }
+  importClick() {
+    const dialogRef = this.dialog.open(UploadCsvComponent, {
+      data: { isData: "" },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.status == "success") {
+        this.getMarketDatas();
+      }
+    });
   }
 }

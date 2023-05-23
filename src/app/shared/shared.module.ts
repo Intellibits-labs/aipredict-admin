@@ -7,14 +7,16 @@ import { UsereditModalComponent } from "./useredit-modal/useredit-modal.componen
 import { FormsModule } from "@angular/forms";
 import { UploadCsvComponent } from "./upload-csv/upload-csv.component";
 import { NodatafoundComponent } from "./nodatafound/nodatafound.component";
+import { ImportLoaderComponent } from "./import-loader/import-loader.component";
 const component = [
   HeaderComponent,
   UsereditModalComponent,
   UploadCsvComponent,
   NodatafoundComponent,
+  ImportLoaderComponent,
 ];
 @NgModule({
-  declarations: [...component, UploadCsvComponent],
+  declarations: [...component],
   imports: [CommonModule, MaterialModule, FormsModule],
   exports: [...component],
 })

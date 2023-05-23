@@ -23,6 +23,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatRippleModule } from "@angular/material/core";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatSliderModule } from "@angular/material/slider";
 const modulesArray = [
   MatButtonModule,
   MatInputModule,
@@ -45,6 +46,7 @@ const modulesArray = [
   MatRippleModule,
   MatProgressSpinnerModule,
   MatAutocompleteModule,
+  MatSliderModule,
 ];
 
 @NgModule({

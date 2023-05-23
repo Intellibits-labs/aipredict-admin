@@ -34,6 +34,10 @@ export class StocksComponent {
 
   getStock(page: string = "1", pageSize = 10) {
     this.loader.show();
+    let status = "";
+    if (this.selectedValue) {
+      status = "&status=" + this.selectedValue;
+    }
     this.pageSize = pageSize;
     this.dataService
       .getMethod(
@@ -42,28 +46,13 @@ export class StocksComponent {
           page +
           "&sortBy=createdAt:desc&limit=" +
           this.pageSize +
-          "&status=" +
-          this.selectedValue
+          status
       )
       .subscribe({
         next: (res) => {
           console.log("🚀 ~ line 189 ~ UsersPage  ~ res", res);
 
-          var array: any = [];
-          // res.results.map((x: any) => {
-          //   if (
-          //     x?.['meta']?.['Global Quote']?.['10. change percent'].includes(
-          //       '-'
-          //     )
-          //   ) {
-          //     x.flag = true;
-          //   } else {
-          //     x.flag = false;
-          //   }
-          //   array.push(x);
-          // });
           this.usersArray = new MatTableDataSource<any>(res.results);
-          // this.usersArray = res.results;
 
           this.pageSize = res.limit;
           this.pageIndex = res.page - 1;

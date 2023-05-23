@@ -19,6 +19,8 @@ export class HttpApi {
   // Stock
   static getStock = "stock";
   static getAllStock = "stock/all";
+  static getHolidays = "holiday/all";
+  static toggleHoliday = "holiday/toggle";
 
   // Predictions
   static getPrediction = "prediction";

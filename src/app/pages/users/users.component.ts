@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
     "Name",
     "Email",
     "Type",
-    "Annual ROI",
+    "Annual ROR",
     "Status",
     "Actions",
   ];

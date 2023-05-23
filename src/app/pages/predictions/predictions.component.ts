@@ -6,7 +6,6 @@ import { HttpApi } from "src/app/core/http/http-api";
 import { DataService } from "src/app/core/services/data.service";
 import { LoaderService } from "src/app/core/services/loader.service";
 import { ToastService } from "src/app/core/services/toast.service";
-import { UploadCsvComponent } from "src/app/shared/upload-csv/upload-csv.component";
 import { UsereditModalComponent } from "src/app/shared/useredit-modal/useredit-modal.component";
 
 @Component({
@@ -24,7 +23,7 @@ export class PredictionsComponent {
     "Sell Price",
     "Stop Loss",
     "Status",
-    "Expected ROI",
+    "Expected ROR",
   ];
   usersArray = new MatTableDataSource<any>([]);
   public totalLength = 0;
@@ -116,11 +115,5 @@ export class PredictionsComponent {
     console.log(ev.value);
     this.selectedValue = ev.value;
     this.getPrediction();
-  }
-
-  uploadClick() {
-    const dialogRef = this.dialog.open(UploadCsvComponent, {
-      data: { isData: "" },
-    });
   }
 }

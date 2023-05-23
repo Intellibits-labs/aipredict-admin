@@ -2,9 +2,6 @@
   <mat-toolbar>
     <span>Predictions</span>
     <span class="example-spacer"></span>
-    <button mat-button class="example-icon" (click)="uploadClick()">
-      Upload
-    </button>
   </mat-toolbar>
 
   <table mat-table [dataSource]="usersArray">
@@ -18,7 +15,7 @@
         <span *ngIf="item == 'Stock'">
           {{ element.stock.name }}
         </span>
-        <span *ngIf="item == 'ROI'">
+        <span *ngIf="item == 'ROR'">
           {{ element?.['ROI'] | number}}
         </span>
         <span *ngIf="item == 'Trade Date'">

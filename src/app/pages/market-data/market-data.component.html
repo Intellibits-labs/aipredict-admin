@@ -2,37 +2,46 @@
   <mat-toolbar>
     <span>Market Data</span>
     <span class="example-spacer"></span>
-    <mat-form-field appearance="outline">
-      <mat-label>Select Stock</mat-label>
-      <mat-select [(value)]="selectedStock">
-        <mat-option
-          *ngFor="let item of allStocks"
-          (click)="selectStock(item)"
-          [value]="item.id"
+
+    <form class="example-form">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Select Stock</mat-label>
+        <input
+          type="text"
+          aria-label="text"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <button
+          *ngIf="myControl.valid"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearClick()"
         >
-          {{ item.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <!-- <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label>Select Stock</mat-label>
-      <input
-        type="text"
-        placeholder=""
-        aria-label="Number"
-        matInput
-        [matAutocomplete]="auto"
-      />
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option
-          *ngFor="let option of allStocks | async"
-          [value]="option.id"
-        >
-          {{ option.name }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field> -->
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            (click)="onStockClick(option)"
+            *ngFor="let option of filteredOptions | async"
+            [value]="option.name"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <button
+      mat-stroked-button
+      class="example-icon import_btn"
+      (click)="importClick()"
+    >
+      Import
+    </button>
   </mat-toolbar>
+
   <ng-container *ngIf="MarketDataArray">
     <table mat-table [dataSource]="MarketDataArray">
       <ng-container *ngFor="let item of tableColumn" [matColumnDef]="item">

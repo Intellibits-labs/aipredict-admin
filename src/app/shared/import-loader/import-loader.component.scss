@@ -1,0 +1,32 @@
+.content {
+  width: 300px;
+  padding: 40px;
+  height: 60px;
+  mat-slider {
+    width: 100%;
+  }
+}
+.example-label-container {
+  display: flex;
+  justify-content: space-between;
+}
+.range {
+  width: 100%;
+  height: 10px;
+  margin-top: 10px;
+  display: flex;
+
+  .color {
+    // width: 40%;
+    height: 10px;
+    background: blue;
+    border-radius: 5px;
+    transition: width 1s ease;
+  }
+  .gray {
+    // width: 100%;
+    height: 10px;
+    background: gainsboro;
+    border-radius: 5px;
+  }
+}

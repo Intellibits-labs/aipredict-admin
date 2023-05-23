@@ -27,9 +27,11 @@ a {
   margin: 0;
   padding: 0;
 }
-.selected {
+.selected,
+a:active {
   background-color: #dddddd;
-  border-radius: 8px;
+  border-radius: 8px !important;
+
   .mdc-list-item__primary-text {
     color: #000000;
   }

@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { Injectable } from "@angular/core";
+import { NgxUiLoaderService } from "ngx-ui-loader";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class LoaderService {
   loading: any;
-
   constructor(private ngxService: NgxUiLoaderService) {}
 
   ngOnInit() {}
@@ -15,8 +14,7 @@ export class LoaderService {
     this.ngxService.start();
   }
   dismiss() {
-    console.log('loader dismiss');
-
+    console.log("loader dismiss");
     this.ngxService.stop();
   }
 }
