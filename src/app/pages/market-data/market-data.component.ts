@@ -16,7 +16,7 @@ import { UploadCsvComponent } from "src/app/shared/upload-csv/upload-csv.compone
   styleUrls: ["./market-data.component.scss"],
 })
 export class MarketDataComponent {
-  @ViewChild(MatPaginator, { read: true }) paginator: MatPaginator | any;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator | any;
   tableColumn: string[] = ["Open", "High", "Close", "Low", "Symbol"];
   MarketDataArray = new MatTableDataSource<any>([]);
   public totalLength = 0;
@@ -49,25 +49,27 @@ export class MarketDataComponent {
   }
 
   getAllStocks() {
-    this.dataService.getMethod(HttpApi.getAllStock).subscribe({
-      next: (res) => {
-        console.log("🚀 ~ line 189 ~ UsersPage ~ res", res);
-        this.allStocks = res;
-        this.myControl.patchValue(res[0].name);
-        this.stockId = res[0].id;
-        this.filteredOptions = this.myControl.valueChanges.pipe(
-          startWith(""),
-          map((value: any) => this._filter(value || ""))
-        );
-        this.getMarketDatas();
-        console.log("selectedStock ", this.selectedStock);
-      },
-      error: (e) => {
-        console.error(e);
-        this.toast.showToast({ message: e.message, type: "ERROR" });
-      },
-      complete: () => console.info("complete"),
-    });
+    this.dataService
+      .getMethod(HttpApi.getAllStock + "?status=ACTIVE")
+      .subscribe({
+        next: (res) => {
+          console.log("🚀 ~ line 189 ~ UsersPage ~ res", res);
+          this.allStocks = res;
+          this.myControl.patchValue(res[0].name);
+          this.stockId = res[0].id;
+          this.filteredOptions = this.myControl.valueChanges.pipe(
+            startWith(""),
+            map((value: any) => this._filter(value || ""))
+          );
+          this.getMarketDatas();
+          console.log("selectedStock ", this.selectedStock);
+        },
+        error: (e) => {
+          console.error(e);
+          this.toast.showToast({ message: e.message, type: "ERROR" });
+        },
+        complete: () => console.info("complete"),
+      });
   }
   clearClick() {
     this.myControl?.reset();
@@ -121,9 +123,9 @@ export class MarketDataComponent {
     console.log(event);
     this.getMarketDatas(event.pageIndex + 1, event.pageSize);
   }
-  ngAfterViewInit() {
-    this.MarketDataArray.paginator = this.paginator;
-  }
+  // ngAfterViewInit() {
+  //   this.MarketDataArray.paginator = this.paginator;
+  // }
   selectStock(item: any) {
     this.selectedStock = item.id;
     this.getMarketDatas();

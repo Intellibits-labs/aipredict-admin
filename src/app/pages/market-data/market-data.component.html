@@ -38,6 +38,7 @@
       class="example-icon import_btn"
       (click)="importClick()"
     >
+      <mat-icon>download</mat-icon>
       Import
     </button>
   </mat-toolbar>
@@ -61,9 +62,6 @@
     <mat-paginator
       (page)="getData($event)"
       [pageSizeOptions]="[5, 10, 20, 50, 100]"
-      [length]="totalLength"
-      [pageIndex]="pageIndex"
-      [pageSize]="pageSize"
       [showFirstLastButtons]="true"
       aria-label="Select page of periodic elements"
     >

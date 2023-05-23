@@ -15,6 +15,11 @@ table {
 }
 .import_btn {
   height: 56px;
-  margin-bottom: 20px;
   margin-left: 10px;
+}
+mat-toolbar {
+  height: 70px;
+}
+mat-form-field {
+  height: 56px;
 }
