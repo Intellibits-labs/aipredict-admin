@@ -13,11 +13,19 @@ import { UploadCsvComponent } from "src/app/shared/upload-csv/upload-csv.compone
 @Component({
   selector: "app-market-data",
   templateUrl: "./market-data.component.html",
-  styleUrls: ["./market-data.component.scss"],
+  styleUrls: ["./market-data.component.scss"]
 })
 export class MarketDataComponent {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator | any;
-  tableColumn: string[] = ["Open", "High", "Close", "Low", "Symbol"];
+  tableColumn: string[] = [
+    "Name",
+    "Symbol",
+    "Date",
+    "Open",
+    "High",
+    "Close",
+    "Low"
+  ];
   MarketDataArray = new MatTableDataSource<any>([]);
   public totalLength = 0;
 
@@ -68,7 +76,7 @@ export class MarketDataComponent {
           console.error(e);
           this.toast.showToast({ message: e.message, type: "ERROR" });
         },
-        complete: () => console.info("complete"),
+        complete: () => console.info("complete")
       });
   }
   clearClick() {
@@ -115,7 +123,7 @@ export class MarketDataComponent {
           this.toast.showToast({ message: e.message, type: "ERROR" });
           this.loader.dismiss();
         },
-        complete: () => console.info("complete"),
+        complete: () => console.info("complete")
       });
   }
 
@@ -132,7 +140,7 @@ export class MarketDataComponent {
   }
   importClick() {
     const dialogRef = this.dialog.open(UploadCsvComponent, {
-      data: { isData: "" },
+      data: { isData: "" }
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result.status == "success") {

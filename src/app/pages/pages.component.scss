@@ -6,11 +6,12 @@ mat-sidenav {
   padding: 15px;
   height: 100vh;
   border-right: none;
-  background: #121836;
+  background: #181c33;
   .logo {
-    width: 70%;
+    width: 50%;
     margin-bottom: 20px;
     margin-top: 20px;
+    margin-left: 20px;
   }
 }
 .email {
@@ -20,7 +21,9 @@ mat-sidenav {
   position: absolute;
   bottom: 15px;
   // width: 260px;
-
+  a {
+    height: 72px !important;
+  }
   .logout_icon {
     margin-top: 24px;
     margin-right: 10px;
@@ -29,32 +32,34 @@ mat-sidenav {
 }
 
 a {
+  height: 44px !important;
   margin: 0;
   padding: 0;
   .mdc-list-item__primary-text {
     color: #ffffff;
+    font-size: 15px;
   }
   mat-icon {
+    margin-right: 16px !important;
     color: #ffffff;
   }
 }
+a:hover {
+  mat-icon {
+    color: #ffffff;
+  }
+  color: #ffffff;
+  --mdc-list-list-item-hover-leading-icon-color: #ffffff;
+}
 .selected,
 a:active {
-  background-color: #dddddd;
+  background-color: #c1c5ff;
   border-radius: 8px !important;
 
   .mdc-list-item__primary-text {
     color: #000000;
   }
   mat-icon {
-    color: #000000;
+    color: #000000 !important;
   }
-}
-
-a:hover {
-  mat-icon {
-    color: #ffffff !important;
-  }
-  color: #ffffff;
-  --mdc-list-list-item-hover-leading-icon-color: #ffffff !important;
 }
