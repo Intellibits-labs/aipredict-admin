@@ -24,6 +24,7 @@ export class PredictionsComponent {
     "Stop Loss",
     "Status",
     "Expected ROR",
+    "ROR",
   ];
   usersArray = new MatTableDataSource<any>([]);
   public totalLength = 0;

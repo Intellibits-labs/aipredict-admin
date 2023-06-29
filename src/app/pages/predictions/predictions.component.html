@@ -15,6 +15,9 @@
         <span *ngIf="item == 'Stock'">
           {{ element.stock.name }}
         </span>
+        <span *ngIf="item == 'Expected ROR'">
+          {{ element?.['expectedROI'] | number}}
+        </span>
         <span *ngIf="item == 'ROR'">
           {{ element?.['ROI'] | number}}
         </span>
